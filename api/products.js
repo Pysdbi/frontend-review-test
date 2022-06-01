@@ -6,6 +6,9 @@ function sleep(fn) {
     }, SLEEP_TIME);
   });
 }
+function randomInt(min, max) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 const dataService = {
   getProductsList() {
@@ -29,7 +32,8 @@ const dataService = {
         image: '/products/cabbage.jpg',
       }
     ];
-    return products;
+    // FIXME Изменение цены
+    return products.map(x=>({...x, price: randomInt(5, 100)}));
   },
 };
 
